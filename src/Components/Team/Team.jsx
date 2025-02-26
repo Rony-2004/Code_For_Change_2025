@@ -45,7 +45,7 @@ const Team = () => {
 
           const members = [
             { name: "SOUMADITYA PAL", image: importedImages[0].default, social: { linkedin: "#", instagram: "https://www.instagram.com/soumaditya.pal/" } },
-            { name: "MU AHEMAD", image: importedImages[1].default, social: { linkedin: "#", instagram: "https://www.instagram.com/rony.op_/" } },
+            { name: "MU AHMED", image: importedImages[1].default, social: { linkedin: "#", instagram: "https://www.instagram.com/rony.op_/" } },
             { name: "AASHISH PRASAD", image: importedImages[2].default, social: { linkedin: "#", instagram: "https://www.instagram.com/aashishprasad65/" } },
             { name: "AKASH LAHA", image: importedImages[3].default, social: { linkedin: "#", instagram: "https://www.instagram.com/_akash_._laha_/" } },
             { name: "SAYAN GORAI", image: importedImages[4].default, social: { linkedin: "#", instagram: "https://www.instagram.com/sayan_garai45/" } },
