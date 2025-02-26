@@ -1,8 +1,7 @@
 .footer-container {
-  background-color: 
-  #fefadc;
+  background-color: #fefadc;
   color: white;
-  padding: 2rem 1rem; /* Reduced padding for the container */
+  padding: 2rem 1rem;
   text-align: center;
 }
 
@@ -10,50 +9,108 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  color:#232323;
-  gap: 1rem; /* Reduced overall gap between sections */
+  color: #232323;
+  gap: 1rem;
 }
 
 .footer-section {
   flex: 1 1 120px;
   min-width: 220px;
-  margin-bottom: 1rem; /* Reduced bottom margin for sections */
+  margin-bottom: 1rem;
 }
 
+/* Shining Animation for "About Us" */
 .footer-section h3 {
   font-size: 1.25rem;
-  margin-bottom: 0.5rem; /* Reduced margin under the heading */
+  margin-bottom: 0.5rem;
   color: #f1563f;
   font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
-.footer-section p {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0.5rem 0; /* Reduced top and bottom margins for paragraphs */
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: shine 3s infinite linear;
 }
 
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Pop In-Out Animation on Hover (Only for Email, Runs Non-Stop on Hover) */
+@keyframes popInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.footer-section .email:hover {
+  animation: popInOut 1s infinite ease-in-out;
+}
+
+/* Social Media Icons - Modern Dotted Effect & Zoom-in */
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 0.5rem; /* Reduced gap between social icons */
-  margin-top: 0.5rem; /* Reduced top margin */
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-.footer-bottom {
-  margin-top: 1rem; /* Reduced margin between content and bottom text */
-  font-size: 1rem;
-  color:#232323;
+.social-icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+  filter: url(#dottedEffect);
 }
 
-.footer-bottom p {
-  margin-bottom: 0.25rem; /* Reduced bottom margin */
+.social-icon:hover {
+  transform: scale(1.2);
+  color: #f1563f;
 }
 
-.footer-link {
-  color: #232323;
+/* Remove visited link color effect */
+.social-links a {
   text-decoration: none;
+  color: inherit;
+}
+
+.social-links a:visited {
+  color: inherit;
+}
+
+/* Footer Bottom Text Animation */
+.footer-bottom p a {
+  position: relative;
+  display: inline-block;
   font-weight: 600;
+  text-decoration: none;
+  color: #232323;
+  overflow: hidden;
+}
+
+.footer-bottom p a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: shine 3s infinite linear;
 }
 
 .footer-link:hover {
@@ -69,14 +126,13 @@
   .footer-content {
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem; /* Adjusted gap for smaller screens */
+    gap: 0.75rem;
   }
 
   .footer-section {
     min-width: 100%;
     text-align: center;
-    margin-bottom: 0.75rem; 
-    color:#232323;
+    margin-bottom: 0.75rem;
   }
 
   .footer-section h3 {
@@ -89,29 +145,27 @@
   }
 
   .social-links {
-    gap: 0.4rem; /* Further reduced gap for icons */
+    gap: 0.4rem;
     margin-top: 0.4rem;
   }
 
   .footer-bottom {
     font-size: 0.9rem;
     margin-top: 0.75rem;
-    color:#232323;
   }
 }
 
-/* Extra Small Screens */
 @media (max-width: 480px) {
   .footer-container {
     padding: 1rem 0.5rem;
   }
 
   .footer-content {
-    gap: 0.5rem; /* Smaller gap for extra-small screens */
+    gap: 0.5rem;
   }
 
   .footer-section {
-    margin-bottom: 1px; /* Minimized margin */
+    margin-bottom: 1px;
   }
 
   .footer-section h3 {
@@ -126,7 +180,7 @@
   }
 
   .social-links {
-    gap: 0.3rem; /* Minimal gap for social links */
+    gap: 0.3rem;
     margin-top: 0.25rem;
   }
 
