@@ -1,205 +1,233 @@
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Oi&family=Sigmar+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Joti+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Joti+One&family=Markazi+Text:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Joti+One&family=Markazi+Text:wght@400..700&family=Rubik+Iso&display=swap');
-
-/* Custom properties */
-:root {
-  /* Colors */
-  --background-color: #fefadc;
-  --primary-box-color: #e94f37;
-  --card-color: #232323;
-  --text-color: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  
-  /* Dimensions */
-  --container-max-width: 1400px;
-  --card-min-width: 280px;
-  --card-max-width: 400px;
-  
-  /* Spacing */
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  
-  /* Typography */
-  --font-family-display: "Sigmar One", serif;
-  --font-size-base: clamp(0.9rem, 2vw, 1rem);
-  --font-size-lg: clamp(1rem, 2.5vw, 1.25rem);
-  --font-size-xl: clamp(1.25rem, 3vw, 1.5rem);
-  --font-size-2xl: clamp(1.5rem, 4vw, 2rem);
-  --font-size-3xl: clamp(2.5rem, 6vw, 3.5rem);
-  
-  /* Transitions */
-  --transition-speed: 0.6s;
-  --transition-timing: ease;
-}
-
-/* Base styles */
-.hackathon-container {
-  min-height: 100vh;
-  background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: clamp(var(--spacing-sm), 2vw, var(--spacing-xl));
-  flex-direction: column;
-}
-
-.content-box {
-  background-color: var(--primary-box-color);
-  border-radius: 25px;
-  padding: clamp(var(--spacing-lg), 3vw, var(--spacing-xl));
-  width: 100%;
-  max-width: var(--container-max-width);
-  box-shadow: 0 6px 20px var(--shadow-color);
-}
-
-/* Typography */
-h1 {
-  color: var(--text-color);
-  font-size: var(--font-size-3xl);
-  text-align: center;
-  text-shadow: 3px 3px 8px var(--shadow-color);
-  font-family: var(--font-family-display);
-  margin-bottom: var(--spacing-md);
-}
-
-/* Cards Grid */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), 1fr));
-  gap: clamp(var(--spacing-md), 2vw, var(--spacing-lg));
-  width: 100%;
-  padding: var(--spacing-md);
-  justify-items: center;
-}
-
-/* Card Component */
-.problem-card {
-  height: clamp(250px, 40vh, 350px);
-  width: 100%;
-  max-width: var(--card-max-width);
-  perspective: 1000px;
-  cursor: pointer;
-  transition: transform 0.3s var(--transition-timing);
-}
-
-/* Inner Card */
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform var(--transition-speed);
-  transform-style: preserve-3d;
-}
-
-.problem-card.flipped .card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Card Faces */
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 20px;
-  background-color: var(--card-color);
-  color: var(--text-color);
-  padding: clamp(var(--spacing-md), 3vw, var(--spacing-lg));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 6px 20px var(--shadow-color);
-}
-
-.card-back {
-  transform: rotateY(180deg);
-  overflow: hidden;
-}
-
-/* Card Content */
-.card-front h2 {
-  font-size: var(--font-size-2xl);
-  letter-spacing: 2px;
-  margin: 0;
-  font-family: "Bangers", serif;
-}
-
-.card-back h3 {
-  font-size: var(--font-size-lg);
-  font-weight: bold;
-  margin-bottom: var(--spacing-md);
-  color: red;
-  font-family: "Bangers", serif;
-}
-
-.card-back ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.card-back li {
-  margin-bottom: var(--spacing-sm);
-  font-size: var(--font-size-base);
-  font-family: "Bangers", serif;
-  letter-spacing: 1.2px;
-}
-
-/* Hover Effects */
-.problem-card:hover {
-  transform: translateY(-5px);
-}
-
-.card-front:hover,
-.card-back:hover {
-  box-shadow: 0 8px 25px var(--shadow-color);
-  transition: box-shadow 0.3s var(--transition-timing);
-}
-
-/* Large Screen Layout */
-@media (min-width: 1050px) {
-  .cards-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-lg);
-  }
-}
-
-/* Medium Screen Adjustments */
-@media (max-width: 768px) {
-  .hackathon-container {
-    padding: var(--spacing-md);
-  }
-
-  .cards-grid {
-    gap: var(--spacing-md);
-  }
-
-  .problem-card {
-    max-width: 100%; /* Ensures it fits the container */
-  }
-}
-
-/* Small Screen Adjustments */
-@media (max-width: 480px) {
-  .hackathon-container {
-    padding: var(--spacing-sm);
-  }
-  
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .problem-card {
-    max-width: 100%; /* Full-width cards */
-  }
-}
+ /* Import fonts */
+ @import url('https://fonts.googleapis.com/css2?family=Oi&family=Sigmar+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Joti+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Joti+One&family=Markazi+Text:wght@400..700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Joti+One&family=Markazi+Text:wght@400..700&family=Rubik+Iso&display=swap');
+ 
+ /* Custom properties */
+ :root {
+   /* Colors */
+   --background-color: #fefadc;
+   --primary-box-color: #e94f37;
+   --card-color: #232323;
+   --text-color: #ffffff;
+   --glow-color: #ffd700;
+   --shadow-color: rgba(0, 0, 0, 0.3);
+   
+   /* Dimensions */
+   --container-max-width: 1400px;
+   --card-min-width: 280px;
+   --card-max-width: 400px;
+   
+   /* Spacing */
+   --spacing-sm: 0.5rem;
+   --spacing-md: 1rem;
+   --spacing-lg: 2rem;
+   --spacing-xl: 3rem;
+   
+   /* Typography */
+   --font-family-display: "Sigmar One", serif;
+   --font-size-base: clamp(0.9rem, 2vw, 1rem);
+   --font-size-lg: clamp(1rem, 2.5vw, 1.25rem);
+   --font-size-xl: clamp(1.25rem, 3vw, 1.5rem);
+   --font-size-2xl: clamp(1.5rem, 4vw, 2rem);
+   --font-size-3xl: clamp(2.5rem, 6vw, 3.5rem);
+   
+   /* Transitions */
+   --transition-speed: 0.6s;
+   --transition-timing: ease;
+ }
+ 
+ /* Base styles */
+ .hackathon-container {
+   min-height: 100vh;
+   background-color: var(--background-color);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: clamp(var(--spacing-sm), 2vw, var(--spacing-xl));
+   flex-direction: column;
+ }
+ 
+ .content-box {
+   background-color: var(--primary-box-color);
+   border-radius: 25px;
+   padding: clamp(var(--spacing-lg), 3vw, var(--spacing-xl));
+   width: 100%;
+   max-width: var(--container-max-width);
+   box-shadow: 0 6px 20px var(--shadow-color);
+ }
+ 
+ /* Glowing Hackathon Themes */
+ h1 {
+   color: var(--text-color);
+   font-size: var(--font-size-3xl);
+   text-align: center;
+   font-family: var(--font-family-display);
+   margin-bottom: var(--spacing-md);
+   animation: glow 1.5s infinite alternate;
+   transition: transform 0.3s ease-in-out;
+   text-shadow: 
+     0 0 5px var(--glow-color),
+     0 0 10px var(--glow-color),
+     0 0 20px var(--glow-color),
+     0 0 40px rgba(255, 215, 0, 0.8);
+ }
+ 
+ @keyframes glow {
+   0% {
+     text-shadow: 
+       0 0 5px var(--glow-color),
+       0 0 10px var(--glow-color),
+       0 0 20px var(--glow-color);
+   }
+   100% {
+     text-shadow: 
+       0 0 8px var(--glow-color),
+       0 0 15px var(--glow-color),
+       0 0 30px rgba(255, 215, 0, 0.9);
+   }
+ }
+ 
+ /* Zoom-in effect on hover */
+ h1:hover {
+   transform: scale(1.1);
+ }
+ 
+ /* Cards Grid */
+ .cards-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), 1fr));
+   gap: clamp(var(--spacing-md), 2vw, var(--spacing-lg));
+   width: 100%;
+   padding: var(--spacing-md);
+   justify-items: center;
+ }
+ 
+ /* Card Component */
+ .problem-card {
+   height: clamp(250px, 40vh, 350px);
+   width: 100%;
+   max-width: var(--card-max-width);
+   perspective: 1000px;
+   cursor: pointer;
+   transition: transform 0.3s var(--transition-timing);
+ }
+ 
+ /* Inner Card */
+ .card-inner {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   text-align: center;
+   transition: transform var(--transition-speed);
+   transform-style: preserve-3d;
+ }
+ 
+ .problem-card.flipped .card-inner {
+   transform: rotateY(180deg);
+ }
+ 
+ /* Card Faces */
+ .card-front,
+ .card-back {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   backface-visibility: hidden;
+   border-radius: 20px;
+   background-color: var(--card-color);
+   color: var(--text-color);
+   padding: clamp(var(--spacing-md), 3vw, var(--spacing-lg));
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   box-shadow: 0 6px 20px var(--shadow-color);
+ }
+ 
+ .card-back {
+   transform: rotateY(180deg);
+   overflow: hidden;
+ }
+ 
+ /* Card Content */
+ .card-front h2 {
+   font-size: var(--font-size-2xl);
+   letter-spacing: 2px;
+   margin: 0;
+   font-family: "Bangers", serif;
+ }
+ 
+ .card-back h3 {
+   font-size: var(--font-size-lg);
+   font-weight: bold;
+   margin-bottom: var(--spacing-md);
+   color: red;
+   font-family: "Bangers", serif;
+ }
+ 
+ .card-back ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+ }
+ 
+ .card-back li {
+   margin-bottom: var(--spacing-sm);
+   font-size: var(--font-size-base);
+   font-family: "Bangers", serif;
+   letter-spacing: 1.2px;
+ }
+ 
+ /* Hover Effects */
+ .problem-card:hover {
+   transform: translateY(-5px);
+ }
+ 
+ .card-front:hover,
+ .card-back:hover {
+   box-shadow: 0 8px 25px var(--shadow-color);
+   transition: box-shadow 0.3s var(--transition-timing);
+ }
+ 
+ /* Large Screen Layout */
+ @media (min-width: 1050px) {
+   .cards-grid {
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: var(--spacing-lg);
+   }
+ }
+ 
+ /* Medium Screen Adjustments */
+ @media (max-width: 768px) {
+   .hackathon-container {
+     padding: var(--spacing-md);
+   }
+ 
+   .cards-grid {
+     gap: var(--spacing-md);
+   }
+ 
+   .problem-card {
+     max-width: 100%;
+   }
+ }
+ 
+ /* Small Screen Adjustments */
+ @media (max-width: 480px) {
+   .hackathon-container {
+     padding: var(--spacing-sm);
+   }
+   
+   .cards-grid {
+     grid-template-columns: 1fr;
+   }
+ 
+   .problem-card {
+     max-width: 100%;
+   }
+ }
+ 
