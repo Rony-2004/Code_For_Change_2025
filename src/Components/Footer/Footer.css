@@ -1,10 +1,11 @@
 .footer-container {
   background-color: #fefadc;
-  color: white;
+  color: #232323;
   padding: 2rem 1rem;
   text-align: center;
 }
 
+/* Footer Content Layout */
 .footer-content {
   display: flex;
   flex-wrap: wrap;
@@ -19,7 +20,6 @@
   margin-bottom: 1rem;
 }
 
-/* Shining Animation for "About Us" */
 .footer-section h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
@@ -50,21 +50,7 @@
   }
 }
 
-/* Pop In-Out Animation on Hover (Only for Email, Runs Non-Stop on Hover) */
-@keyframes popInOut {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-.footer-section .email:hover {
-  animation: popInOut 1s infinite ease-in-out;
-}
-
-/* Social Media Icons - Modern Dotted Effect & Zoom-in */
+/* Social Media Icons */
 .social-links {
   display: flex;
   justify-content: center;
@@ -74,7 +60,6 @@
 
 .social-icon {
   transition: transform 0.3s ease, color 0.3s ease;
-  filter: url(#dottedEffect);
 }
 
 .social-icon:hover {
@@ -82,7 +67,6 @@
   color: #f1563f;
 }
 
-/* Remove visited link color effect */
 .social-links a {
   text-decoration: none;
   color: inherit;
@@ -92,14 +76,48 @@
   color: inherit;
 }
 
-/* Footer Bottom Text Animation */
+/* Built with Love Section */
+.built-with-love {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  color: #232323;
+  position: relative;
+  animation: shine 3s infinite linear;
+}
+
+/* Glowing Heart Effect */
+.glowing-heart {
+  color: red;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(255, 0, 0, 1);
+  }
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
 .footer-bottom p a {
+  color: #232323;
+  text-decoration: none;
   position: relative;
   display: inline-block;
-  font-weight: 600;
-  text-decoration: none;
-  color: #232323;
-  overflow: hidden;
 }
 
 .footer-bottom p a::before {
@@ -149,6 +167,10 @@
     margin-top: 0.4rem;
   }
 
+  .built-with-love {
+    font-size: 1rem;
+  }
+
   .footer-bottom {
     font-size: 0.9rem;
     margin-top: 0.75rem;
@@ -182,6 +204,10 @@
   .social-links {
     gap: 0.3rem;
     margin-top: 0.25rem;
+  }
+
+  .built-with-love {
+    font-size: 0.9rem;
   }
 
   .footer-bottom {
